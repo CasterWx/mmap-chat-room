@@ -133,7 +133,7 @@ public class MappedFile extends ReferenceResource {
         return this.fileFromOffset;
     }
 
-    private boolean appendMessage(final byte[] data) {
+    public boolean appendMessage(final byte[] data) {
         int currentPos = this.wrotePosition.get();
         if ((currentPos + data.length) <= this.fileSize) {
             try {
@@ -148,7 +148,7 @@ public class MappedFile extends ReferenceResource {
         return false;
     }
 
-    private boolean appendMessage(final byte[] data, final int offset, final int length) {
+    public boolean appendMessage(final byte[] data, final int offset, final int length) {
         int currentPos = this.wrotePosition.get();
         if ((currentPos + length <= this.fileSize)) {
             try {
@@ -203,8 +203,8 @@ public class MappedFile extends ReferenceResource {
         return write > flush;
     }
 
-    private void commit0(MessageExt ext, int offset, int length) {
-
+    public int getWrotePosition() {
+        return wrotePosition.get();
     }
 
     public int getFlushedPosition() {
